@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'xconfig'
+require 'active_support/all'
+require 'pry'
+
+Pry.start
