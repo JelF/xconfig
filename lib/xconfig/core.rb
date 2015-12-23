@@ -1,5 +1,6 @@
 require 'active_support/core_ext/module/delegation'
 require 'active_support/core_ext/hash/indifferent_access'
+require 'activesupport/lib/active_support/core_ext/object/deep_dup'
 require 'singleton'
 require 'ice_nine'
 require 'memoist'
