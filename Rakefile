@@ -1,5 +1,6 @@
-require 'bundler/gem_tasks'
+
 require 'yard'
+require 'bundler/gem_tasks'
 require 'rubocop/rake_task'
 require 'rspec/core/rake_task'
 
@@ -14,6 +15,13 @@ RuboCop::RakeTask.new
 RSpec::Core::RakeTask.new(:spec)
 
 task default: %i(rubocop spec:coverage)
+
+def open_in_browser(path)
+  require 'launchy'
+  require 'uri'
+
+  Launchy.open(URI.join('file:///', path.to_s))
+end
 
 namespace :spec do
   coverage_root = ROOT.join('spec/coverage')
@@ -32,22 +40,18 @@ namespace :spec do
   desc 'runs spec with coverage and opens result'
   task :show_coverage do
     begin
-      Rake::Task['spec:coverage'].execute
-    rescue 'SystemExit'
+      Rake::Task['spec:coverage'].invoke
+    rescue SystemExit
       puts 'specs failed or coverage too low!'
     end
 
-    require 'uri'
-    exec 'xdg-open',
-         URI.join('file:///', coverage_root.join('index.html').to_s).to_s
+    open_in_browser coverage_root.join('index.html')
   end
 end
 
 namespace :doc do
   desc 'open doc'
   task open: :doc do
-    require 'uri'
-    uri = URI.join('file:///', ROOT.join('doc/frames.html').to_s)
-    exec 'xdg-open', uri.to_s
+    open_in_browser ROOT.join('doc/frames.html')
   end
 end

@@ -10,10 +10,13 @@ if ENV['COVERAGE_ROOT']
     minimum_coverage 100
     coverage_dir ENV['COVERAGE_ROOT']
     add_group 'Library', 'lib'
+    add_filter 'spec/'
   end
 end
 
 require 'xconfig'
+
+Dir[File.expand_path('../support/**/*.rb', __FILE__)].each(&method(:require))
 
 RSpec.configure do |config|
 end

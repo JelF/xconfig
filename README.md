@@ -1,5 +1,6 @@
 # XConfig
 XConfig is a ruby gem configuration engine  
+WARNING: it is useless right now, await this line expired  
 
 ## Usage (vendor-side)  
 `extend` XConfig in you module to create `::configure` and `::xconfigure`

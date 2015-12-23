@@ -25,6 +25,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = %w(lib)
 
   spec.add_dependency 'activesupport', '~> 4.0'
+  spec.add_dependency 'ice_nine', '~> 0.11'
+  spec.add_dependency 'memoist', '~> 0.11'
 
   spec.add_development_dependency 'bundler', '~> 1.10'
   spec.add_development_dependency 'rspec', '~> 3.3'
@@ -33,4 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 0.35'
   spec.add_development_dependency 'yard', '~> 0.8'
   spec.add_development_dependency 'simplecov', '~> 0.11'
+  spec.add_development_dependency 'launchy', '~> 2.4'
 end
