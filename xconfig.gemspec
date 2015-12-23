@@ -14,7 +14,12 @@ Gem::Specification.new do |spec|
     Documentation at master: [https://github.com/JelF/xconfig/README.md]
   MARKDOWN
 
-  spec.platform = 'java' if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'jruby'
+
+  if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'jruby'
+    spec.platform = 'java'
+  else
+    spec.required_ruby_version = '~> 2.1'
+  end
 
   spec.homepage = 'https://github.com/JelF/xconfig'
   spec.license = 'WTFPL'
