@@ -66,7 +66,8 @@ namespace :doc do
     next if objs.empty?
     puts 'No documentation found for:'
     objs.each { |x| puts "\t#{x}" }
-    exit
+
+    fail '100% document coverage required'
   end
 end
 
