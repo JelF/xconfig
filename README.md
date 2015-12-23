@@ -1,4 +1,6 @@
 # XConfig
+[![Build Status](https://travis-ci.org/JelF/xconfig.svg)]
+(https://travis-ci.org/JelF/xconfig)  
 XConfig is a ruby gem configuration engine  
 WARNING: it is useless right now, await this line expired  
 
