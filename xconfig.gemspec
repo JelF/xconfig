@@ -14,7 +14,6 @@ Gem::Specification.new do |spec|
     Documentation at master: [https://github.com/JelF/xconfig/README.md]
   MARKDOWN
 
-
   if defined?(RUBY_ENGINE) && RUBY_ENGINE == 'jruby'
     spec.platform = 'java'
   else
