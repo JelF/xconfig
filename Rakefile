@@ -14,8 +14,6 @@ end
 RuboCop::RakeTask.new
 RSpec::Core::RakeTask.new(:spec)
 
-task default: %i(rubocop spec:coverage)
-
 def open_in_browser(path)
   require 'launchy'
   require 'uri'
@@ -54,4 +52,22 @@ namespace :doc do
   task open: :doc do
     open_in_browser ROOT.join('doc/frames.html')
   end
+
+  desc 'checks doc coverage'
+  task coverage: :doc do
+    # ideally you've already generated the database to .load it
+    # if not, have this task depend on the docs task.
+    YARD::Registry.load
+    objs = YARD::Registry.select do |o|
+      puts "pending #{o}" if o.docstring =~ /TODO|FIXME|@pending/
+      o.docstring.blank?
+    end
+
+    next if objs.empty?
+    puts 'No documentation found for:'
+    objs.each { |x| puts "\t#{x}" }
+    exit
+  end
 end
+
+task default: %i(rubocop  doc:coverage spec:coverage)

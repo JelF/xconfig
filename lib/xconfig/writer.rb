@@ -14,6 +14,11 @@ module XConfig
 
     private
 
+    # @param hash [String|Pathname|Hash]
+    # @return [Hash]
+    #   stringified hash if [Hash] passed
+    # @return [Hash]
+    #   loaded from hash, used as path of YAML file, with stringified keys
     def __xconfig_read_hash(hash)
       case hash
       when String, Pathname

@@ -1,7 +1,7 @@
 require 'pathname'
 
 module ConfigurableModule
-  extend XConfig::Writer
+  extend XConfig
 end
 
 describe XConfig::Writer, :isolate_xconfig do
@@ -24,6 +24,11 @@ describe XConfig::Writer, :isolate_xconfig do
 
     expect(subject)
       .to match('foo' => true, 'bar' => :baz, 'baz' => { 'a' => :b })
+  end
+
+  it 'discards something strange' do
+    expect { ConfigurableModule.configure(true) }
+      .to raise_error(ArgumentError, 'Specify either path or hash')
   end
 
   pending 'it gets all related configs, i.e. set in submodules'

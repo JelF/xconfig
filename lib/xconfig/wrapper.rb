@@ -12,6 +12,11 @@ module XConfig
       @model = {}
     end
 
+    # for a key 'foo' provides this methods:
+    # `foo=` sets foo
+    # `foo!` alias for `foo = true`
+    # `foo?` alias for `foo.present?`
+    # `foo` reads foo
     def method_missing(name, *args)
       name = name.to_s
 
